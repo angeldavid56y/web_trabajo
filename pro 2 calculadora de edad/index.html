@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Edad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calcula tu edad</h1>
+  <input type="number" id="anioNacimiento" placeholder="Escribe tu año de nacimiento" />
+  <button onclick="calcularEdad()">Calcular edad</button>
+  <div id="resultado"></div>
+
+  <script>
+    function calcularEdad() {
+      const anioNacimiento = document.getElementById("anioNacimiento").value;
+      const anioActual = new Date().getFullYear();
+      const edad = anioActual - anioNacimiento;
+
+      const resultado = document.getElementById("resultado");
+
+      if (!anioNacimiento || isNaN(anioNacimiento) || anioNacimiento > anioActual || anioNacimiento < 1900) {
+        resultado.textContent = "Por favor, ingresa un año válido.";
+        resultado.style.color = "red";
+      } else {
+        resultado.textContent = `Tienes${edad} años.`;
+        resultado.style.color = "#333";
+      }
+    }
+  </script>
+
+</body>
+</html>
